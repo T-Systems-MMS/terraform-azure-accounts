@@ -138,7 +138,11 @@ locals {
       public_client                  = {}
       required_resource_access       = {}
       single_page_application        = {}
-      web                            = {}
+      web                            = {
+        homepage_url  = null
+        logout_url    = null
+        redirect_uris = []
+      }
       tags                           = null
     }
     application_password = {

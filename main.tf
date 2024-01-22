@@ -120,6 +120,13 @@ resource "azuread_application" "application" {
   template_id                    = local.application[each.key].template_id
   terms_of_service_url           = local.application[each.key].terms_of_service_url
 
+  dynamic "web" {
+    for_each = local.application[each.key].web != null ? ["true"] : []
+    content {
+      redirect_uris = local.application[each.key].web.redirect_uris
+    }
+  }
+
   dynamic "required_resource_access" {
     for_each = local.application[each.key].required_resource_access
 
